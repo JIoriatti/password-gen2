@@ -7,7 +7,8 @@ const upperCaseLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N
 const lowerCaseLetters = upperCaseLetters.map((letter)=> letter.toLowerCase());
 const numbers =[1,2,3,4,5,6,7,8,9]
 
-console.log(numbers());
+const totalCharacterSet = specialChars.concat(upperCaseLetters, lowerCaseLetters, numbers);
+
 
 const validateUserAnswer =(answer, prompt)=>{
   if(answer === null){
@@ -51,6 +52,8 @@ const generatePassword = () =>{
   const passNumberAnswer = promptPassNumbers();
   const passSpecialCharsAnswer = promptPassSpecialChars();
   
+
+
 
   console.log(passLengthAnswer, passLowercaseAnswer, passUppercaseAnswer, passNumberAnswer, passSpecialCharsAnswer)
   
