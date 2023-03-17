@@ -76,8 +76,6 @@ const generatePassword = () =>{
     let concatedCharSet = totalCharSet.join('')
     pass += concatedCharSet.charAt(Math.random() * n)
   }
-  console.log(totalCharSet);
-  console.log(passLengthAnswer, passLowercaseAnswer, passUppercaseAnswer, passNumberAnswer, passSpecialCharsAnswer)
   return pass;
 }
 
