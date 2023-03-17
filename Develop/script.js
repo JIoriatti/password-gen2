@@ -7,7 +7,7 @@ const upperCaseLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N
 const lowerCaseLetters = upperCaseLetters.map((letter)=> letter.toLowerCase());
 const numbers =[1,2,3,4,5,6,7,8,9]
 
-const totalCharacterSet = specialChars.concat(upperCaseLetters, lowerCaseLetters, numbers);
+
 
 
 const validateUserAnswer =(answer, prompt)=>{
@@ -52,11 +52,33 @@ const generatePassword = () =>{
   const passNumberAnswer = promptPassNumbers();
   const passSpecialCharsAnswer = promptPassSpecialChars();
   
+  let totalCharSet=[]
 
-
-
+  if(!passLowercaseAnswer && !passUppercaseAnswer && !passNumberAnswer && !passSpecialCharsAnswer){
+    alert('At least one character type must be selected!')
+    return generatePassword();
+  }
+  if(passLowercaseAnswer){
+    totalCharSet = [...totalCharSet, ...lowerCaseLetters]
+  }
+  if(passUppercaseAnswer){
+    totalCharSet = [...totalCharSet, ...upperCaseLetters]
+  }
+  if(passSpecialCharsAnswer){
+    totalCharSet = [...totalCharSet, ...specialChars]
+  }
+  if(passNumberAnswer){
+    totalCharSet = [...totalCharSet, ...numbers]
+  }
+  let pass =''
+  for(let i=0;i<passLengthAnswer;i++){
+    let n = totalCharSet.length;
+    let concatedCharSet = totalCharSet.join('')
+    pass += concatedCharSet.charAt(Math.random() * n)
+  }
+  console.log(totalCharSet);
   console.log(passLengthAnswer, passLowercaseAnswer, passUppercaseAnswer, passNumberAnswer, passSpecialCharsAnswer)
-  
+  return pass;
 }
 
 // Get references to the #generate element
