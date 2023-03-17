@@ -1,13 +1,48 @@
 // Assignment code here
 
+const validateUserAnswer =(answer, prompt)=>{
+  if(answer === null){
+    return false;
+  }
+  if(answer === ''){
+    return true
+  }
+  alert('Please click OK for "yes", or Cancel for "no".')
+  return prompt();
+}
+const promptPassLength = () =>{
+  const passLength = prompt('Please enter a password between at least 8 characters and at most 128 characters.')
+  if(passLength < 8 || passLength > 128 || isNaN(passLength)){
+    alert('Please enter a number between 8 and 128.')
+    return promptPassLength();
+  }
+  return passLength;
+}
+const promptPassLowercase =() =>{
+  const passIncludeLowercase = prompt('Would you like to include lowercase characters in your password? (OK for "yes", Cancel for "no".)')
+  return validateUserAnswer(passIncludeLowercase, promptPassLowercase);
+}
+const promptPassUppercase =()=>{
+  const passIncludeUppercase = prompt('Would you like to include uppercase characters in your password? (OK for "yes", Cancel for "no".)');
+  return validateUserAnswer(passIncludeUppercase, promptPassUppercase);
+}
+const promptPassNumbers =() =>{
+  const passIncludeNumbers = prompt('Would you like to include numbers in your password? (OK for "yes", Cancel for "no".)')
+  return validateUserAnswer(passIncludeNumbers, promptPassNumbers);
+}
+const promptPassSpecialChars =() =>{
+  const passIncludeSpecialChars = prompt('Would you like to include special characters in your password? (OK for "yes", Cancel for "no".)')
+  return validateUserAnswer(passIncludeSpecialChars, promptPassSpecialChars);
+}
 
 const generatePassword = () =>{
-  const passLength = prompt('Please enter a password between at least 8 characters and at most 128 characters. (y/n)')
-  const passIncludeLowercase = prompt('Would you like to include lowercase characters in your password? (y/n)')
-  const passIncludeUppercase = prompt('Would you like to include uppercase characters in your password? (y/n)')
-  const passIncludeNumbers = prompt('Would you like to include numbers in your password? (y/n)')
-  const passIncludeSpecialChar = prompt('Would you like to include special characters in your password? (y/n)')
-
+  const passLengthAnswer = promptPassLength();
+  const passLowercaseAnswer = promptPassLowercase();
+  const passUppercaseAnswer = promptPassUppercase();
+  const passNumberAnswer = promptPassNumbers();
+  const passSpecialCharsAnswer = promptPassSpecialChars();
+  
+  console.log(passLengthAnswer, passLowercaseAnswer, passUppercaseAnswer, passNumberAnswer, passSpecialCharsAnswer)
   
 }
 
